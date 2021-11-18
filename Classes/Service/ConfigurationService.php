@@ -1,7 +1,9 @@
 <?php
 namespace WapplerSystems\Cleverreach\Service;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
  * This file is part of the "cleverreach" Extension for TYPO3 CMS.
@@ -19,10 +21,13 @@ class ConfigurationService {
 
     /**
      * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
-     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $objectManager;
 
+    public function __construct()
+    {
+        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+    }
 
     public function getConfiguration() {
 

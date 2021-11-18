@@ -17,6 +17,7 @@ namespace WapplerSystems\Cleverreach\Form\Validator;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
+use WapplerSystems\Cleverreach\CleverReach\Api;
 use WapplerSystems\Cleverreach\Service\ConfigurationService;
 
 /**
@@ -29,10 +30,14 @@ class OptinValidator extends AbstractValidator
 
     /**
      * @var \WapplerSystems\Cleverreach\CleverReach\Api
-     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $api;
 
+    public function __construct(array $options = [])
+    {
+        $this->api = GeneralUtility::makeInstance(Api::class);
+        parent::__construct($options);
+    }
 
     /**
      * Checks if the given value is already in the list

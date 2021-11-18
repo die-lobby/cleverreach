@@ -28,7 +28,6 @@ class CleverreachFinisher extends AbstractFinisher
 
     /**
      * @var \WapplerSystems\Cleverreach\CleverReach\Api
-     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $api;
 
@@ -39,6 +38,12 @@ class CleverreachFinisher extends AbstractFinisher
     protected $defaultOptions = [
     ];
 
+    public function __construct()
+    {
+        $this->api = GeneralUtility::makeInstance(Api::class);
+        
+        parent::__construct();
+    }
 
     /**
      * Executes this finisher
